@@ -1,0 +1,14 @@
+{
+    "_id": "66e03d29028a7803e87a715f",
+    "CategoryId": 1,
+    "categoryName": "Cemilan",
+    "sku": "MHZVTK",
+    "name": "Ciki ciki",
+    "description": "Ciki ciki yang super enak, hanya di toko klontong kami",
+    "price": 30000,
+    "weight": 500,
+    "length": 5,
+    "width": 5,
+    "height": 5,
+    "image": "https://cf.shopee.co.id/file/7cb930d1bd183a435f4fb3e5cc4a896b"
+}

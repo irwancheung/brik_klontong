@@ -1,0 +1,72 @@
+[
+    {
+        "_id": "66e03d29028a7803e87a715f",
+        "CategoryId": 1,
+        "categoryName": "Cemilan",
+        "sku": "MHZVTK",
+        "name": "Ciki ciki",
+        "description": "Ciki ciki yang super enak, hanya di toko klontong kami",
+        "price": 30000,
+        "weight": 500,
+        "length": 5,
+        "width": 5,
+        "height": 5,
+        "image": "https://cf.shopee.co.id/file/7cb930d1bd183a435f4fb3e5cc4a896b"
+    },
+    {
+        "_id": "66e03d3a028a7803e87a7161",
+        "CategoryId": 2,
+        "categoryName": "Minuman",
+        "sku": "DRK123",
+        "name": "Teh Botol Sosro",
+        "description": "Minuman teh segar, pas untuk menemani setiap suasana",
+        "price": 5000,
+        "weight": 250,
+        "length": 6,
+        "width": 6,
+        "height": 20,
+        "image": "https://cf.shopee.co.id/file/1cb837d2ff182b1c10c9a4fe5c123cfa"
+    },
+    {
+        "_id": "66e03d4b028a7803e87a7162",
+        "CategoryId": 3,
+        "categoryName": "Perawatan",
+        "sku": "SHM456",
+        "name": "Shampo Sunsilk",
+        "description": "Shampo Sunsilk membuat rambut lembut dan wangi sepanjang hari",
+        "price": 20000,
+        "weight": 500,
+        "length": 8,
+        "width": 5,
+        "height": 20,
+        "image": "https://cf.shopee.co.id/file/2d2a5a18bf9c18d08c40d3a4d9d9ccef"
+    },
+    {
+        "_id": "66e03d5c028a7803e87a7163",
+        "CategoryId": 4,
+        "categoryName": "Daging",
+        "sku": "MTS789",
+        "name": "Daging Ayam Fillet",
+        "description": "Daging ayam fillet tanpa tulang dan lemak, segar dan sehat",
+        "price": 45000,
+        "weight": 1000,
+        "length": 15,
+        "width": 10,
+        "height": 2,
+        "image": "https://cf.shopee.co.id/file/3fbd87a1cc978435e4f7bfe134dc768e"
+    },
+    {
+        "_id": "66e03d6d028a7803e87a7164",
+        "CategoryId": 5,
+        "categoryName": "Bumbu Dapur",
+        "sku": "SPC321",
+        "name": "Lada Putih Bubuk",
+        "description": "Lada putih bubuk berkualitas tinggi untuk menambah cita rasa masakan",
+        "price": 15000,
+        "weight": 100,
+        "length": 4,
+        "width": 4,
+        "height": 10,
+        "image": "https://cf.shopee.co.id/file/4ad2b717f1333a1d3e4b9d776c4b9cba"
+    }
+]
