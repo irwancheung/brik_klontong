@@ -1,6 +1,6 @@
 {
-    "_id": "66e03d29028a7803e87a715f",
-    "CategoryId": 1,
+    "id": "66e03d29028a7803e87a715f",
+    "categoryId": "1",
     "categoryName": "Cemilan",
     "sku": "MHZVTK",
     "name": "Ciki ciki",

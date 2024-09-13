@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
   final String id;
-  final int categoryId;
+  final String categoryId;
   final String categoryName;
   final String sku;
   final String name;
@@ -33,7 +33,7 @@ class Product extends Equatable {
 
   Product copyWith({
     String? id,
-    int? categoryId,
+    String? categoryId,
     String? categoryName,
     String? sku,
     String? name,
@@ -61,13 +61,13 @@ class Product extends Equatable {
     );
   }
 
-  factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
+  factory Product.fromJson(String str) => Product.fromMap(jsonDecode(str));
 
-  String toJson() => json.encode(toMap());
+  String toJson() => jsonEncode(toMap());
 
   factory Product.fromMap(Map<String, dynamic> json) => Product(
-        id: json['_id'],
-        categoryId: json['CategoryId'],
+        id: json['id'],
+        categoryId: json['categoryId'],
         categoryName: json['categoryName'],
         sku: json['sku'],
         name: json['name'],
@@ -81,8 +81,8 @@ class Product extends Equatable {
       );
 
   Map<String, dynamic> toMap() => {
-        '_id': id,
-        'CategoryId': categoryId,
+        'id': id,
+        'categoryId': categoryId,
         'categoryName': categoryName,
         'sku': sku,
         'name': name,

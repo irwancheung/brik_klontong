@@ -31,11 +31,20 @@ void main() {
     blocTest<ProductBloc, ProductState>(
       'emits [getProductsLoading, getProductsError] when repository call failed',
       setUp: () {
-        when(() => mockProductRepository.getProducts(page: 1))
-            .thenAnswer((_) async => left(const AppException('error')));
+        when(() => mockProductRepository.getProducts(
+              page: 1,
+              limit: 10,
+              refresh: true,
+              searchQuery: '',
+            )).thenAnswer((_) async => left(const AppException('error')));
       },
       build: () => bloc,
-      act: (bloc) => bloc.add(const ProductEvent.getProducts(page: 1)),
+      act: (bloc) => bloc.add(const ProductEvent.getProducts(
+        page: 1,
+        limit: 10,
+        refresh: true,
+        searchQuery: '',
+      )),
       expect: () => const <ProductState>[
         ProductState.getProductsLoading(),
         ProductState.getProductsError(AppException('error')),
@@ -45,10 +54,20 @@ void main() {
     blocTest<ProductBloc, ProductState>(
       'emits [getProductsLoading, getProductsSuccess] when repository call success',
       setUp: () {
-        when(() => mockProductRepository.getProducts(page: 1)).thenAnswer((_) async => right(<Product>[]));
+        when(() => mockProductRepository.getProducts(
+              page: 1,
+              limit: 10,
+              refresh: true,
+              searchQuery: '',
+            )).thenAnswer((_) async => right(<Product>[]));
       },
       build: () => bloc,
-      act: (bloc) => bloc.add(const ProductEvent.getProducts(page: 1)),
+      act: (bloc) => bloc.add(const ProductEvent.getProducts(
+        page: 1,
+        limit: 10,
+        refresh: true,
+        searchQuery: '',
+      )),
       expect: () => const <ProductState>[
         ProductState.getProductsLoading(),
         ProductState.getProductsSuccess(<Product>[]),

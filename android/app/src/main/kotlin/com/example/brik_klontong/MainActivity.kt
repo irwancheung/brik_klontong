@@ -1,4 +1,4 @@
-package com.example.brik_klontong
+package id.brik.brik_klontong
 
 import io.flutter.embedding.android.FlutterActivity
 

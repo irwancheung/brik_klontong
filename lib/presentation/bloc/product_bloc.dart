@@ -25,7 +25,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     await _execute(
       emit,
       loadingState: const _GetProductsLoading(),
-      repositoryCall: () => _repository.getProducts(page: event.page),
+      repositoryCall: () => _repository.getProducts(
+        page: event.page,
+        limit: event.limit,
+        refresh: event.refresh,
+        searchQuery: event.searchQuery,
+      ),
       successState: (products) => _GetProductsSuccess(products),
       errorState: (error) => _GetProductsError(error),
     );

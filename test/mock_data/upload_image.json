@@ -1,0 +1,57 @@
+{
+    "status_code": 200,
+    "success": {
+        "message": "image uploaded",
+        "code": 200
+    },
+    "image": {
+        "name": "JPEG 20240913 040957 1512660962843720153",
+        "extension": "jpg",
+        "width": 318,
+        "height": 159,
+        "size": 9442,
+        "time": 1726175435,
+        "expiration": 0,
+        "likes": 0,
+        "description": null,
+        "original_filename": "JPEG_20240913_040957_1512660962843720153.jpg",
+        "is_animated": 0,
+        "nsfw": 0,
+        "id_encoded": "dg1uHE7",
+        "size_formatted": "9.4 KB",
+        "filename": "dg1uHE7.jpg",
+        "url": "https://iili.io/dg1uHE7.jpg",
+        "url_short": "https://freeimage.host/",
+        "url_seo": "https://freeimage.host/i/jpeg-20240913-040957-1512660962843720153.dg1uHE7",
+        "url_viewer": "https://freeimage.host/i/dg1uHE7",
+        "url_viewer_preview": "https://freeimage.host/",
+        "url_viewer_thumb": "https://freeimage.host/i/dg1uHE7",
+        "image": {
+            "filename": "dg1uHE7.jpg",
+            "name": "dg1uHE7",
+            "mime": "image/jpeg",
+            "extension": "jpg",
+            "url": "https://iili.io/dg1uHE7.jpg",
+            "size": 9442
+        },
+        "thumb": {
+            "filename": "dg1uHE7.th.jpg",
+            "name": "dg1uHE7.th",
+            "mime": "image/jpeg",
+            "extension": "jpg",
+            "url": "https://iili.io/dg1uHE7.th.jpg"
+        },
+        "display_url": "https://iili.io/dg1uHE7.jpg",
+        "display_width": 318,
+        "display_height": 159,
+        "views_label": "views",
+        "likes_label": "likes",
+        "how_long_ago": "7 hours ago",
+        "date_fixed_peer": "2024-09-12 21:10:35",
+        "title": "JPEG 20240913 040957 1512660962843720153",
+        "title_truncated": "JPEG 20240913 040957 1512...",
+        "title_truncated_html": "JPEG 20240913 040957 1512...",
+        "is_use_loader": false
+    },
+    "status_txt": "OK"
+}

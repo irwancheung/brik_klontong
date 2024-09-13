@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class ProductRequestParams extends Equatable {
-  final int categoryId;
+  final String categoryId;
   final String categoryName;
   final String sku;
   final String name;
@@ -29,12 +29,40 @@ class ProductRequestParams extends Equatable {
     required this.image,
   });
 
+  ProductRequestParams copyWith({
+    String? categoryId,
+    String? categoryName,
+    String? sku,
+    String? name,
+    String? description,
+    int? price,
+    int? weight,
+    int? length,
+    int? width,
+    int? height,
+    String? image,
+  }) {
+    return ProductRequestParams(
+      categoryId: categoryId ?? this.categoryId,
+      categoryName: categoryName ?? this.categoryName,
+      sku: sku ?? this.sku,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      weight: weight ?? this.weight,
+      length: length ?? this.length,
+      width: width ?? this.width,
+      height: height ?? this.height,
+      image: image ?? this.image,
+    );
+  }
+
   factory ProductRequestParams.fromJson(String str) => ProductRequestParams.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory ProductRequestParams.fromMap(Map<String, dynamic> json) => ProductRequestParams(
-        categoryId: json['CategoryId'],
+        categoryId: json['categoryId'],
         categoryName: json['categoryName'],
         sku: json['sku'],
         name: json['name'],
@@ -48,7 +76,7 @@ class ProductRequestParams extends Equatable {
       );
 
   Map<String, dynamic> toMap() => {
-        'CategoryId': categoryId,
+        'categoryId': categoryId,
         'categoryName': categoryName,
         'sku': sku,
         'name': name,

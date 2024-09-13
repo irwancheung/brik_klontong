@@ -19,7 +19,9 @@ mixin _$ProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int page) getProducts,
+    required TResult Function(
+            int page, int limit, bool refresh, String searchQuery)
+        getProducts,
     required TResult Function(String productId) getProduct,
     required TResult Function(ProductRequestParams params) createProduct,
     required TResult Function(String productId, ProductRequestParams params)
@@ -30,7 +32,8 @@ mixin _$ProductEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int page)? getProducts,
+    TResult? Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult? Function(String productId)? getProduct,
     TResult? Function(ProductRequestParams params)? createProduct,
     TResult? Function(String productId, ProductRequestParams params)?
@@ -41,7 +44,8 @@ mixin _$ProductEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int page)? getProducts,
+    TResult Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult Function(String productId)? getProduct,
     TResult Function(ProductRequestParams params)? createProduct,
     TResult Function(String productId, ProductRequestParams params)?
@@ -146,7 +150,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int page) getProducts,
+    required TResult Function(
+            int page, int limit, bool refresh, String searchQuery)
+        getProducts,
     required TResult Function(String productId) getProduct,
     required TResult Function(ProductRequestParams params) createProduct,
     required TResult Function(String productId, ProductRequestParams params)
@@ -160,7 +166,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int page)? getProducts,
+    TResult? Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult? Function(String productId)? getProduct,
     TResult? Function(ProductRequestParams params)? createProduct,
     TResult? Function(String productId, ProductRequestParams params)?
@@ -174,7 +181,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int page)? getProducts,
+    TResult Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult Function(String productId)? getProduct,
     TResult Function(ProductRequestParams params)? createProduct,
     TResult Function(String productId, ProductRequestParams params)?
@@ -242,7 +250,7 @@ abstract class _$$GetProductsImplCopyWith<$Res> {
           _$GetProductsImpl value, $Res Function(_$GetProductsImpl) then) =
       __$$GetProductsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int page});
+  $Res call({int page, int limit, bool refresh, String searchQuery});
 }
 
 /// @nodoc
@@ -259,12 +267,27 @@ class __$$GetProductsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? page = null,
+    Object? limit = null,
+    Object? refresh = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetProductsImpl(
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      limit: null == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int,
+      refresh: null == refresh
+          ? _value.refresh
+          : refresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -272,14 +295,24 @@ class __$$GetProductsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetProductsImpl implements _GetProducts {
-  const _$GetProductsImpl({required this.page});
+  const _$GetProductsImpl(
+      {required this.page,
+      required this.limit,
+      required this.refresh,
+      required this.searchQuery});
 
   @override
   final int page;
+  @override
+  final int limit;
+  @override
+  final bool refresh;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'ProductEvent.getProducts(page: $page)';
+    return 'ProductEvent.getProducts(page: $page, limit: $limit, refresh: $refresh, searchQuery: $searchQuery)';
   }
 
   @override
@@ -287,11 +320,16 @@ class _$GetProductsImpl implements _GetProducts {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetProductsImpl &&
-            (identical(other.page, page) || other.page == page));
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.limit, limit) || other.limit == limit) &&
+            (identical(other.refresh, refresh) || other.refresh == refresh) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, page);
+  int get hashCode =>
+      Object.hash(runtimeType, page, limit, refresh, searchQuery);
 
   /// Create a copy of ProductEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -305,35 +343,39 @@ class _$GetProductsImpl implements _GetProducts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int page) getProducts,
+    required TResult Function(
+            int page, int limit, bool refresh, String searchQuery)
+        getProducts,
     required TResult Function(String productId) getProduct,
     required TResult Function(ProductRequestParams params) createProduct,
     required TResult Function(String productId, ProductRequestParams params)
         updateProduct,
     required TResult Function(String productId) deleteProduct,
   }) {
-    return getProducts(page);
+    return getProducts(page, limit, refresh, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int page)? getProducts,
+    TResult? Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult? Function(String productId)? getProduct,
     TResult? Function(ProductRequestParams params)? createProduct,
     TResult? Function(String productId, ProductRequestParams params)?
         updateProduct,
     TResult? Function(String productId)? deleteProduct,
   }) {
-    return getProducts?.call(page);
+    return getProducts?.call(page, limit, refresh, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int page)? getProducts,
+    TResult Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult Function(String productId)? getProduct,
     TResult Function(ProductRequestParams params)? createProduct,
     TResult Function(String productId, ProductRequestParams params)?
@@ -342,7 +384,7 @@ class _$GetProductsImpl implements _GetProducts {
     required TResult orElse(),
   }) {
     if (getProducts != null) {
-      return getProducts(page);
+      return getProducts(page, limit, refresh, searchQuery);
     }
     return orElse();
   }
@@ -392,9 +434,16 @@ class _$GetProductsImpl implements _GetProducts {
 }
 
 abstract class _GetProducts implements ProductEvent {
-  const factory _GetProducts({required final int page}) = _$GetProductsImpl;
+  const factory _GetProducts(
+      {required final int page,
+      required final int limit,
+      required final bool refresh,
+      required final String searchQuery}) = _$GetProductsImpl;
 
   int get page;
+  int get limit;
+  bool get refresh;
+  String get searchQuery;
 
   /// Create a copy of ProductEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -473,7 +522,9 @@ class _$GetProductImpl implements _GetProduct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int page) getProducts,
+    required TResult Function(
+            int page, int limit, bool refresh, String searchQuery)
+        getProducts,
     required TResult Function(String productId) getProduct,
     required TResult Function(ProductRequestParams params) createProduct,
     required TResult Function(String productId, ProductRequestParams params)
@@ -487,7 +538,8 @@ class _$GetProductImpl implements _GetProduct {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int page)? getProducts,
+    TResult? Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult? Function(String productId)? getProduct,
     TResult? Function(ProductRequestParams params)? createProduct,
     TResult? Function(String productId, ProductRequestParams params)?
@@ -501,7 +553,8 @@ class _$GetProductImpl implements _GetProduct {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int page)? getProducts,
+    TResult Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult Function(String productId)? getProduct,
     TResult Function(ProductRequestParams params)? createProduct,
     TResult Function(String productId, ProductRequestParams params)?
@@ -640,7 +693,9 @@ class _$CreateProductImpl implements _CreateProduct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int page) getProducts,
+    required TResult Function(
+            int page, int limit, bool refresh, String searchQuery)
+        getProducts,
     required TResult Function(String productId) getProduct,
     required TResult Function(ProductRequestParams params) createProduct,
     required TResult Function(String productId, ProductRequestParams params)
@@ -654,7 +709,8 @@ class _$CreateProductImpl implements _CreateProduct {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int page)? getProducts,
+    TResult? Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult? Function(String productId)? getProduct,
     TResult? Function(ProductRequestParams params)? createProduct,
     TResult? Function(String productId, ProductRequestParams params)?
@@ -668,7 +724,8 @@ class _$CreateProductImpl implements _CreateProduct {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int page)? getProducts,
+    TResult Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult Function(String productId)? getProduct,
     TResult Function(ProductRequestParams params)? createProduct,
     TResult Function(String productId, ProductRequestParams params)?
@@ -817,7 +874,9 @@ class _$UpdateProductImpl implements _UpdateProduct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int page) getProducts,
+    required TResult Function(
+            int page, int limit, bool refresh, String searchQuery)
+        getProducts,
     required TResult Function(String productId) getProduct,
     required TResult Function(ProductRequestParams params) createProduct,
     required TResult Function(String productId, ProductRequestParams params)
@@ -831,7 +890,8 @@ class _$UpdateProductImpl implements _UpdateProduct {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int page)? getProducts,
+    TResult? Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult? Function(String productId)? getProduct,
     TResult? Function(ProductRequestParams params)? createProduct,
     TResult? Function(String productId, ProductRequestParams params)?
@@ -845,7 +905,8 @@ class _$UpdateProductImpl implements _UpdateProduct {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int page)? getProducts,
+    TResult Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult Function(String productId)? getProduct,
     TResult Function(ProductRequestParams params)? createProduct,
     TResult Function(String productId, ProductRequestParams params)?
@@ -987,7 +1048,9 @@ class _$DeleteProductImpl implements _DeleteProduct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int page) getProducts,
+    required TResult Function(
+            int page, int limit, bool refresh, String searchQuery)
+        getProducts,
     required TResult Function(String productId) getProduct,
     required TResult Function(ProductRequestParams params) createProduct,
     required TResult Function(String productId, ProductRequestParams params)
@@ -1001,7 +1064,8 @@ class _$DeleteProductImpl implements _DeleteProduct {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int page)? getProducts,
+    TResult? Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult? Function(String productId)? getProduct,
     TResult? Function(ProductRequestParams params)? createProduct,
     TResult? Function(String productId, ProductRequestParams params)?
@@ -1015,7 +1079,8 @@ class _$DeleteProductImpl implements _DeleteProduct {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int page)? getProducts,
+    TResult Function(int page, int limit, bool refresh, String searchQuery)?
+        getProducts,
     TResult Function(String productId)? getProduct,
     TResult Function(ProductRequestParams params)? createProduct,
     TResult Function(String productId, ProductRequestParams params)?

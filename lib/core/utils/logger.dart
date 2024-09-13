@@ -31,13 +31,9 @@ class Logger {
 
   // Error
   void e(Object error, [StackTrace? stackTrace]) {
-    if (kReleaseMode) {
-      FirebaseCrashlytics.instance.recordError(error, stackTrace);
-      return;
-    }
+    FirebaseCrashlytics.instance.recordError(error, stackTrace);
 
     const color = '\x1B[31m';
-
     _log(message: error, stackTrace: stackTrace, color: color);
   }
 

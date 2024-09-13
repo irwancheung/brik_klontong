@@ -1,5 +1,6 @@
 import 'package:brik_klontong/core/global_vars.dart';
 import 'package:brik_klontong/core/utils/exception_handler.dart';
+import 'package:brik_klontong/data/data_sources/product_local_data_source.dart';
 import 'package:brik_klontong/data/data_sources/product_remote_data_source.dart';
 import 'package:brik_klontong/data/models/product.dart';
 import 'package:brik_klontong/data/models/request/product_request_params.dart';
@@ -7,15 +8,34 @@ import 'package:dartz/dartz.dart';
 
 class ProductRepository {
   final ProductRemoteDataSource _productRemoteDataSource;
+  final ProductLocalDataSource _productLocalDataSource;
 
-  const ProductRepository({
-    required ProductRemoteDataSource productRemoteDataSource,
-  }) : _productRemoteDataSource = productRemoteDataSource;
+  const ProductRepository(
+      {required ProductRemoteDataSource productRemoteDataSource,
+      required ProductLocalDataSource productLocalDataSource})
+      : _productRemoteDataSource = productRemoteDataSource,
+        _productLocalDataSource = productLocalDataSource;
 
-  Future<Either<AppException, List<Product>>> getProducts({int page = 1, int limit = 10}) async {
+  Future<Either<AppException, List<Product>>> getProducts({
+    required int page,
+    required int limit,
+    required bool refresh,
+    String searchQuery = '',
+  }) async {
     try {
-      appLogger.i('Get products');
-      final products = await _productRemoteDataSource.getProducts();
+      appLogger.i('Get products: page $page, limit $limit');
+      late List<Product> products;
+
+      if (refresh) {
+        products = await _productRemoteDataSource.getProducts();
+        await _productLocalDataSource.saveProducts(products);
+      } else {
+        products = await _productLocalDataSource.getProducts();
+      }
+
+      if (searchQuery.isNotEmpty) {
+        products = products.where((element) => element.name.toLowerCase().contains(searchQuery.toLowerCase())).toList();
+      }
 
       return right(_paginateProducts(products, page: page, limit: limit));
     } catch (e, s) {

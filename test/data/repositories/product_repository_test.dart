@@ -1,4 +1,5 @@
 import 'package:brik_klontong/core/utils/exception_handler.dart';
+import 'package:brik_klontong/data/data_sources/product_local_data_source.dart';
 import 'package:brik_klontong/data/data_sources/product_remote_data_source.dart';
 import 'package:brik_klontong/data/models/product.dart';
 import 'package:brik_klontong/data/models/request/product_request_params.dart';
@@ -11,20 +12,27 @@ import '../../helpers.dart';
 
 class MockProductRemoteDataSource extends Mock implements ProductRemoteDataSource {}
 
+class MockProductLocalDataSource extends Mock implements ProductLocalDataSource {}
+
 void main() {
   late MockProductRemoteDataSource mockProductRemoteDataSource;
+  late MockProductLocalDataSource mockProductLocalDataSource;
   late ProductRepository repository;
 
   setUp(() {
     mockProductRemoteDataSource = MockProductRemoteDataSource();
-    repository = ProductRepository(productRemoteDataSource: mockProductRemoteDataSource);
+    mockProductLocalDataSource = MockProductLocalDataSource();
+    repository = ProductRepository(
+      productRemoteDataSource: mockProductRemoteDataSource,
+      productLocalDataSource: mockProductLocalDataSource,
+    );
   });
 
   group('getProducts()', () {
     test('returns left(AppException) on error', () async {
       when(() => mockProductRemoteDataSource.getProducts()).thenThrow('error');
 
-      final result = await repository.getProducts();
+      final result = await repository.getProducts(page: 1, limit: 3, refresh: true);
 
       expect(result, left(const AppException('error')));
     });
@@ -32,10 +40,11 @@ void main() {
     test('returns right(List<Product>) on success with pagination', () async {
       final products = parseJsonToList(fixture('get_products.json')).map((e) => Product.fromMap(e)).toList();
       when(() => mockProductRemoteDataSource.getProducts()).thenAnswer((_) async => products);
+      when(() => mockProductLocalDataSource.saveProducts(products)).thenAnswer((_) async {});
 
-      final page1Result = await repository.getProducts(limit: 3);
-      final page2Result = await repository.getProducts(page: 2, limit: 3);
-      final page3Result = await repository.getProducts(page: 3, limit: 3);
+      final page1Result = await repository.getProducts(page: 1, limit: 3, refresh: true);
+      final page2Result = await repository.getProducts(page: 2, limit: 3, refresh: true);
+      final page3Result = await repository.getProducts(page: 3, limit: 3, refresh: true);
 
       late final List<Product> page1Products;
       late final List<Product> page2Products;
@@ -75,7 +84,7 @@ void main() {
 
   group('createProduct()', () {
     const productRequestParams = ProductRequestParams(
-      categoryId: 1,
+      categoryId: '1',
       categoryName: 'categoryName',
       sku: 'sku',
       name: 'name',
