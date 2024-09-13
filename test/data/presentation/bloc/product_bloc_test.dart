@@ -20,8 +20,9 @@ void main() {
   setUp(() {
     mockProductRepository = MockProductRepository();
     bloc = ProductBloc(mockProductRepository);
-    product = Product.fromJson(fixture('get_product.json'));
   });
+
+  product = Product.fromJson(fixture('get_product.json'));
 
   test('initial state should be State.initial', () async {
     expect(bloc.state, const ProductState.initial());

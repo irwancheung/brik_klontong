@@ -14,7 +14,7 @@ class MockProductRemoteDataSource extends Mock implements ProductRemoteDataSourc
 
 class MockProductLocalDataSource extends Mock implements ProductLocalDataSource {}
 
-void main() {
+void main() async {
   late MockProductRemoteDataSource mockProductRemoteDataSource;
   late MockProductLocalDataSource mockProductLocalDataSource;
   late ProductRepository repository;
